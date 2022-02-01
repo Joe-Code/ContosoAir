@@ -2,15 +2,15 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
-# This is a continuous delivery pipeline.
 
 trigger:
 - none
 
 resources:
   pipelines:
-    - pipeline: buildContosoAir
-      source: ci.contosoair
+    - pipeline: buildContosAir # identifier for the resource used in pipeline resource variables
+      source: 'Joe-Code.ContosoAir GitHub Lab 1-31-2022' # name of the pipeline that produces an artifact
+
       trigger:
         branches:
           include:
@@ -22,8 +22,8 @@ steps:
 - task: DownloadPipelineArtifact@2
   inputs:
     buildType: 'specific'
-    project: '7902b840-a3c5-473c-a102-947fdbc5f512'
-    definition: '11'
+    project: '5e236c1e-cf37-4b0d-b04a-b19e8bd19f22'
+    definition: '41'
     specificBuildWithTriggering: true
     buildVersionToDownload: 'latest'
     targetPath: '$(Pipeline.Workspace)'
@@ -47,5 +47,5 @@ steps:
     ConnectionType: 'AzureRM'
     azureSubscription: 'AIRS-JFitzgerald(45754f4f-6e9d-416a-92b1-758bff5a564f)'
     appType: 'webApp'
-    WebAppName: '$(web_prefix)-$(web_site)-$(web_environment)'
+    WebAppName: 
     packageForLinux: '$(Pipeline.Workspace)/**/*.zip'
