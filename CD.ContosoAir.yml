@@ -4,7 +4,7 @@ trigger:
 resources:
   pipelines:
     - pipeline: buildContosAir # identifier for the resource used in pipeline resource variables
-      source: 'Joe-Code.ContosoAir GitHub Lab 1-31-2022' # name of the pipeline that produces an artifact
+      source: 'Joe-Code.ContosoAir' # name of the pipeline that produces an artifact
 
       trigger:
         branches:
@@ -18,7 +18,7 @@ steps:
   inputs:
     buildType: 'specific'
     project: '5e236c1e-cf37-4b0d-b04a-b19e8bd19f22'
-    definition: '41'
+    definition: '43'
     specificBuildWithTriggering: true
     buildVersionToDownload: 'latest'
     targetPath: '$(Pipeline.Workspace)'
@@ -26,7 +26,7 @@ steps:
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
-    azureResourceManagerConnection: 'AIRS-JFitzgerald(45754f4f-6e9d-416a-92b1-758bff5a564f)'
+    azureResourceManagerConnection: 'Azure Cloud Deployment'
     subscriptionId: '45754f4f-6e9d-416a-92b1-758bff5a564f'
     action: 'Create Or Update Resource Group'
     resourceGroupName: '$(resourcegroup)'
@@ -40,7 +40,7 @@ steps:
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
-    azureSubscription: 'AIRS-JFitzgerald(45754f4f-6e9d-416a-92b1-758bff5a564f)'
+    azureSubscription: 'Azure Cloud Deployment'
     appType: 'webApp'
     WebAppName: 
     packageForLinux: '$(Pipeline.Workspace)/**/*.zip'
