@@ -42,5 +42,5 @@ steps:
     ConnectionType: 'AzureRM'
     azureSubscription: 'Azure Cloud Deployment'
     appType: 'webApp'
-    WebAppName: 
+    WebAppName: $(web_prefix)-$(web_site)-$(web_environment)
     packageForLinux: '$(Pipeline.Workspace)/**/*.zip'
